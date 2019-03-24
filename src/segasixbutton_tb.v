@@ -1,4 +1,4 @@
-`timescale 1ns / 1ps
+`timescale 1ns / 100ps // time-unit = 1 ns, precision = 100 ps
 module segasixbutton_tb;
 	// Inputs
 	reg p7; // Clock from Sega Mega Drive
@@ -15,7 +15,7 @@ module segasixbutton_tb;
 	reg z;  // Z button
 	reg md; // Mode button
 
-	reg reset;
+	reg clk = 1'd0;
 
 	// Outputs
 	wire p1; // DB9 Pin 1 to Sega Mega Drive
@@ -40,7 +40,7 @@ module segasixbutton_tb;
 		.y(y),
 		.z(z),
 		.md(md),
-		.reset(reset),
+		.clk(clk),
 
 		.p1(p1),
 		.p2(p2),
@@ -50,9 +50,11 @@ module segasixbutton_tb;
 		.p9(p9)
 	);
 
+	always #50 clk <= !clk; // 20Mhz
+
 	initial begin
 		// Initialize Inputs
-		p7 = 1;
+		p7 = 0;
 		up = 1;
 		dw = 1;
 		lf = 1;
@@ -65,28 +67,25 @@ module segasixbutton_tb;
 		y = 1;
 		z = 1;
 		md = 1;
-		reset = 1;
 
-		// #20 p7 = 1;
-		// #20 p7 = 0;
-		// #20 p7 = 1;
-		// #20 p7 = 0;
-		// #20 p7 = 1;
-		// #20 p7 = 0;
-		// #20 p7 = 1;
-		// #20 p7 = 0;
+		#4000000 p7 = 1;
+		#4000000 p7 = 0;
+		#4000000 p7 = 1;
+		#4000000 p7 = 0;
+		#20 p7 = 1;
+		#20 p7 = 0;
+		#20 p7 = 1;
+		#20 p7 = 0;
 
-		#20 p7 = 0;
-		#20 p7 = 1;
-		//	#20 reset = 0;
-		//	#20 reset = 1;
-		#20 p7 = 0;
-		#20 p7 = 1;
-		#20 p7 = 0;
-		#20 p7 = 1;
-		#20 p7 = 0;
-		#20 p7 = 1;
-		#20 p7 = 0;
+		// #20 p7 = 0;
+		// #20 p7 = 1;
+		// #20 p7 = 0;
+		// #20 p7 = 1;
+		// #20 p7 = 0;
+		// #20 p7 = 1;
+		// #20 p7 = 0;
+		// #20 p7 = 1;
+		// #20 p7 = 0;
 		//#40
 	end  
 
