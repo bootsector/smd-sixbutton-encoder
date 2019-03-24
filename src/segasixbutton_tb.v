@@ -1,5 +1,5 @@
 `timescale 1ns / 1ps
-module stimulus;
+module segasixbutton_tb;
 	// Inputs
 	reg p7; // Clock from Sega Mega Drive
 	reg up; // Up button
@@ -31,67 +31,67 @@ module stimulus;
 		.up(up), 
 		.dw(dw),
 		.lf(lf),
-	  .rg(rg),
-	  .a(a),
-	  .b(b),
-	  .c(c),
-	  .st(st),
-	  .x(x),
-	  .y(y),
-	  .z(z),
-	  .md(md),
+		.rg(rg),
+		.a(a),
+		.b(b),
+		.c(c),
+		.st(st),
+		.x(x),
+		.y(y),
+		.z(z),
+		.md(md),
 		.reset(reset),
 
-	  .p1(p1),
-	  .p2(p2),
-	  .p3(p3),
-	  .p4(p4),
-	  .p6(p6),
-	  .p9(p9)
+		.p1(p1),
+		.p2(p2),
+		.p3(p3),
+		.p4(p4),
+		.p6(p6),
+		.p9(p9)
 	);
- 
+
 	initial begin
-	// Initialize Inputs
-	p7 = 1;
-	up = 1;
-	dw = 1;
-	lf = 1;
-	rg = 1;
-	a = 1;
-	b = 1;
-	c = 1;
-	st = 1;
-	x = 1;
-	y = 1;
-	z = 1;
-	md = 1;
-	reset = 1;
- 
-	// #20 p7 = 1;
-	// #20 p7 = 0;
-	// #20 p7 = 1;
-	// #20 p7 = 0;
-	// #20 p7 = 1;
-	// #20 p7 = 0;
-	// #20 p7 = 1;
-	// #20 p7 = 0;
-	
-	#20 p7 = 0;
-	#20 p7 = 1;
-//	#20 reset = 0;
-//	#20 reset = 1;
-	#20 p7 = 0;
-	#20 p7 = 1;
-	#20 p7 = 0;
-	#20 p7 = 1;
-	#20 p7 = 0;
-	#20 p7 = 1;
-	#20 p7 = 0;
-	//#40
-    end  
- 
-		initial begin
-		 $monitor("p7=%d,p1=%d,p2=%d,p3=%d,p4=%d,p6=%d,p9=%d \n",p7,p1,p2,p3,p4,p6,p9);
-		 end
- 
+		// Initialize Inputs
+		p7 = 1;
+		up = 1;
+		dw = 1;
+		lf = 1;
+		rg = 1;
+		a = 1;
+		b = 1;
+		c = 1;
+		st = 1;
+		x = 1;
+		y = 1;
+		z = 1;
+		md = 1;
+		reset = 1;
+
+		// #20 p7 = 1;
+		// #20 p7 = 0;
+		// #20 p7 = 1;
+		// #20 p7 = 0;
+		// #20 p7 = 1;
+		// #20 p7 = 0;
+		// #20 p7 = 1;
+		// #20 p7 = 0;
+
+		#20 p7 = 0;
+		#20 p7 = 1;
+		//	#20 reset = 0;
+		//	#20 reset = 1;
+		#20 p7 = 0;
+		#20 p7 = 1;
+		#20 p7 = 0;
+		#20 p7 = 1;
+		#20 p7 = 0;
+		#20 p7 = 1;
+		#20 p7 = 0;
+		//#40
+	end  
+
+	initial begin
+		$monitor("p7=%d,p1=%d,p2=%d,p3=%d,p4=%d,p6=%d,p9=%d \n",p7,p1,p2,p3,p4,p6,p9);
+	end
+
 endmodule

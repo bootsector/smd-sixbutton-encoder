@@ -1,5 +1,5 @@
 /*
-    Verilog Sega Genesis/Mega Drive encoder v1.0
+    Verilog Sega Genesis/Mega Drive Joystick Encoder v1.0
     (C) Bruno Freitas - 03/2019 - http://www.brunofreitas.com/
     Released under MIT License.
 */
@@ -17,7 +17,7 @@ module md_sixbutton_encoder (
     input y,     // Y button
     input z,     // Z button
     input md,    // Mode button
-    input reset, // This *MUST* be brought LOW at cycles of ~1.6ms
+    input reset, // This *MUST* be brought LOW at cycles of ~1.6ms (SYNC'ed with p7 first change)
     output reg p1 = 1, // DB9 Pin 1 to Sega Mega Drive
     output reg p2 = 1, // DB9 Pin 2 to Sega Mega Drive
     output reg p3 = 1, // DB9 Pin 3 to Sega Mega Drive
