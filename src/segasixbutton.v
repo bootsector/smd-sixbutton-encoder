@@ -56,22 +56,22 @@ always @(*) begin
     if (p7) begin
         case (transition)
             0, 1, 2, 3, 6, 7: begin
-                {p1, p2, p3, p4, p6, p9} <= {up, dw, lf, rg, b, c};
+                {p1, p2, p3, p4, p6, p9} = {up, dw, lf, rg, b, c};
             end
             4, 5: begin
-                {p1, p2, p3, p4, p6, p9} <= {z, y, x, md, 1'b1, 1'b1};
+                {p1, p2, p3, p4, p6, p9} = {z, y, x, md, 1'b1, 1'b1};
             end
         endcase
     end else begin
         case (transition)
             0, 1, 2, 7: begin
-                {p1, p2, p3, p4, p6, p9} <= {up, dw, 1'b0, 1'b0, a, st};
+                {p1, p2, p3, p4, p6, p9} = {up, dw, 1'b0, 1'b0, a, st};
             end
             3, 4: begin
-                {p1, p2, p3, p4, p6, p9} <= {1'b0, 1'b0, 1'b0, 1'b0, a, st};
+                {p1, p2, p3, p4, p6, p9} = {1'b0, 1'b0, 1'b0, 1'b0, a, st};
             end
             5, 6: begin
-                {p1, p2, p3, p4, p6, p9} <= {1'b1, 1'b1, 1'b1, 1'b1, a, st};
+                {p1, p2, p3, p4, p6, p9} = {1'b1, 1'b1, 1'b1, 1'b1, a, st};
             end
         endcase
     end
