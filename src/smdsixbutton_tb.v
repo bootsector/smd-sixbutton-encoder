@@ -6,16 +6,18 @@ module smdsixbutton_tb;
 	reg dw; // Down button
 	reg lf; // Left button
 	reg rg; // Right button
-	reg a;  // A button
-	reg b;  // B button
-	reg c;  // C button
+	reg a;	// A button
+	reg b;	// B button
+	reg c;	// C button
 	reg st; // Start button
-	reg x;  // X button
-	reg y;  // Y button
-	reg z;  // Z button
+	reg x;	// X button
+	reg y;	// Y button
+	reg z;	// Z button
 	reg md; // Mode button
 
 	reg clk = 1'd0;
+
+	integer j, k;
 
 	// Outputs
 	wire [5:0] p;
@@ -40,7 +42,8 @@ module smdsixbutton_tb;
 		.p(p)
 	);
 
-	always #50 clk <= !clk; // 20Mhz
+	//always #50 clk <= !clk; // 20Mhz
+	always #100 clk <= !clk; // 10Mhz
 
 	initial begin
 		// Initialize Inputs
@@ -58,23 +61,34 @@ module smdsixbutton_tb;
 		z = 1;
 		md = 1;
 
-		$strobe("p7=%d,p1=%d,p2=%d,p3=%d,p4=%d,p6=%d,p9=%d \n",p7,p[5],p[4],p[3],p[2],p[1],p[0]);
-		#13000 p7 = 1;
-		$strobe("p7=%d,p1=%d,p2=%d,p3=%d,p4=%d,p6=%d,p9=%d \n",p7,p[5],p[4],p[3],p[2],p[1],p[0]);
-		#13000 p7 = 0;
-		$strobe("p7=%d,p1=%d,p2=%d,p3=%d,p4=%d,p6=%d,p9=%d \n",p7,p[5],p[4],p[3],p[2],p[1],p[0]);
-		#13000 p7 = 1;
-		$strobe("p7=%d,p1=%d,p2=%d,p3=%d,p4=%d,p6=%d,p9=%d \n",p7,p[5],p[4],p[3],p[2],p[1],p[0]);
-		#13000 p7 = 0;
-		$strobe("p7=%d,p1=%d,p2=%d,p3=%d,p4=%d,p6=%d,p9=%d \n",p7,p[5],p[4],p[3],p[2],p[1],p[0]);
-		#13000 p7 = 1;
-		$strobe("p7=%d,p1=%d,p2=%d,p3=%d,p4=%d,p6=%d,p9=%d \n",p7,p[5],p[4],p[3],p[2],p[1],p[0]);
-		#13000 p7 = 0;
-		$strobe("p7=%d,p1=%d,p2=%d,p3=%d,p4=%d,p6=%d,p9=%d \n",p7,p[5],p[4],p[3],p[2],p[1],p[0]);
-		#13000 p7 = 1;
-		$strobe("p7=%d,p1=%d,p2=%d,p3=%d,p4=%d,p6=%d,p9=%d \n",p7,p[5],p[4],p[3],p[2],p[1],p[0]);
-		#13000 p7 = 0;
-		$strobe("p7=%d,p1=%d,p2=%d,p3=%d,p4=%d,p6=%d,p9=%d \n",p7,p[5],p[4],p[3],p[2],p[1],p[0]);
+		for(j = 0; j < 3; j++) begin
+			for(k = 0; k < 10; k++) begin
+				//$display("Current simulation time = %t",$time);
+				//$strobe("transition=%d,p7=%d,p1=%d,p2=%d,p3=%d,p4=%d,p6=%d,p9=%d \n",debug,p7,p[5],p[4],p[3],p[2],p[1],p[0]);
+				#13000 p7 = !p7;
+			end
+			#1600000 $display("delay");
+			//$strobe("p7=%d,p1=%d,p2=%d,p3=%d,p4=%d,p6=%d,p9=%d \n",p7,p[5],p[4],p[3],p[2],p[1],p[0]);
+			//#1800000 p7 = !p7;
+		end
+
+		// $strobe("p7=%d,p1=%d,p2=%d,p3=%d,p4=%d,p6=%d,p9=%d \n",p7,p[5],p[4],p[3],p[2],p[1],p[0]);
+		// #13000 p7 = 1;
+		// $strobe("p7=%d,p1=%d,p2=%d,p3=%d,p4=%d,p6=%d,p9=%d \n",p7,p[5],p[4],p[3],p[2],p[1],p[0]);
+		// #13000 p7 = 0;
+		// $strobe("p7=%d,p1=%d,p2=%d,p3=%d,p4=%d,p6=%d,p9=%d \n",p7,p[5],p[4],p[3],p[2],p[1],p[0]);
+		// #13000 p7 = 1;
+		// $strobe("p7=%d,p1=%d,p2=%d,p3=%d,p4=%d,p6=%d,p9=%d \n",p7,p[5],p[4],p[3],p[2],p[1],p[0]);
+		// #13000 p7 = 0;
+		// $strobe("p7=%d,p1=%d,p2=%d,p3=%d,p4=%d,p6=%d,p9=%d \n",p7,p[5],p[4],p[3],p[2],p[1],p[0]);
+		// #13000 p7 = 1;
+		// $strobe("p7=%d,p1=%d,p2=%d,p3=%d,p4=%d,p6=%d,p9=%d \n",p7,p[5],p[4],p[3],p[2],p[1],p[0]);
+		// #13000 p7 = 0;
+		// $strobe("p7=%d,p1=%d,p2=%d,p3=%d,p4=%d,p6=%d,p9=%d \n",p7,p[5],p[4],p[3],p[2],p[1],p[0]);
+		// #13000 p7 = 1;
+		// $strobe("p7=%d,p1=%d,p2=%d,p3=%d,p4=%d,p6=%d,p9=%d \n",p7,p[5],p[4],p[3],p[2],p[1],p[0]);
+		// #13000 p7 = 0;
+		// $strobe("p7=%d,p1=%d,p2=%d,p3=%d,p4=%d,p6=%d,p9=%d \n",p7,p[5],p[4],p[3],p[2],p[1],p[0]);
 
 		// $strobe("p7=%d,p1=%d,p2=%d,p3=%d,p4=%d,p6=%d,p9=%d \n",p7,p[5],p[4],p[3],p[2],p[1],p[0]);
 		// #13000 p7 = 0;
@@ -96,10 +110,11 @@ module smdsixbutton_tb;
 		// #13000 p7 = 0;
 		// $strobe("p7=%d,p1=%d,p2=%d,p3=%d,p4=%d,p6=%d,p9=%d \n",p7,p[5],p[4],p[3],p[2],p[1],p[0]);
 		//#40
-	end  
+	end	 
 
 	initial begin
 		//$monitor("p7=%d,p1=%d,p2=%d,p3=%d,p4=%d,p6=%d,p9=%d \n",p7,p[5],p[4],p[3],p[2],p[1],p[0]);
+		$monitor("p7=%d,p1=%d,p2=%d,p3=%d,p4=%d,p6=%d,p9=%d \n",p7,p[5],p[4],p[3],p[2],p[1],p[0]);
 	end
 
 endmodule
