@@ -1,5 +1,5 @@
 /*
-    Verilog Sega Genesis/Mega Drive Joystick Encoder v1.2
+    Verilog Sega Genesis/Mega Drive Joystick Encoder v1.2a
     (C) Bruno Freitas - 03/2019 - http://www.brunofreitas.com/
     Released under MIT License.
 */
@@ -37,16 +37,14 @@ always @(posedge clk) begin
 		last_p7 <= p7;
 	end
 	
-	if (clk) begin
-		clk_counter <= clk_counter - 1;
+	clk_counter <= clk_counter - 1;
 
-		// Reset transition at every 2ms (500Hz)
-		if (clk_counter == 0) begin
-			$display("Reset!");
-			transition <= 0;
-			last_p7 <= p7;
-			clk_counter <= CLK_FREQ / 500;
-		end
+	// Reset transition at every 2ms (500Hz)
+	if (clk_counter == 0) begin
+		$display("Reset!");
+		transition <= 0;
+		last_p7 <= p7;
+		clk_counter <= CLK_FREQ / 500;
 	end
 end
 
