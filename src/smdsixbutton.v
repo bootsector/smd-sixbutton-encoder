@@ -36,17 +36,13 @@ always @(posedge clk) begin
 	last_p7_1 <= p7;
 	last_p7_2 <= last_p7_1;
 
-	// If p7 rising edge
-	if (last_p7_1 && !last_p7_2) begin
-		hi_count <= hi_count + 1;
-	end
-
 	if (clk_counter == 0) begin
 		$display("Reset!");
 		clk_counter <= TIMEOUT;
 		hi_count <= 0;
 	end else begin
 		if (last_p7_1 && !last_p7_2) begin
+			hi_count <= hi_count + 1;
 			clk_counter <= TIMEOUT;
 		end else begin
 			clk_counter <= clk_counter - 1;
