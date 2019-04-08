@@ -1,5 +1,5 @@
 /*
-	Verilog Sega Genesis/Mega Drive Joystick Encoder v2.0
+	Verilog Sega Genesis/Mega Drive Joystick Encoder v2.0a
 	(C) Bruno Freitas - 03/2019 - http://www.brunofreitas.com/
 	Released under MIT License.
 */
