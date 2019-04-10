@@ -14,6 +14,6 @@ This is perfect to be used on custom Sega Genesis controllers without having to 
 
 This is a FREE implementation licensed under MIT license.
 
-Let me know about your cool projected featuring this implementation. Enjoy!
+Let me know about your cool projectes featuring this implementation. Enjoy!
 
 bootsector
