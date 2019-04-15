@@ -6,8 +6,8 @@
 
 module smdsixbutton (
 	input clk,
-	input p7,
-	output reg [5:0] p = 6'b111111,
+	input p7,	 // DB9_PIN7 (SEL)
+	output reg [5:0] p = 6'b111111, // {DB9_PIN1, DB9_PIN2, DB9_PIN3, DB9_PIN4, DB9_PIN6, DB9_PIN9}
 	input up,	 // Up button
 	input dw,	 // Down button
 	input lf,	 // Left button
