@@ -1,5 +1,5 @@
 /*
-	Verilog Sega Genesis/Mega Drive Joystick Encoder v2.1
+	Verilog Sega Genesis/Mega Drive Joystick Encoder v2.2
 	(C) Bruno Freitas - 03/2019 - http://www.brunofreitas.com/
 	Released under MIT License.
 */
@@ -68,9 +68,9 @@ always @(p7) begin
 		3'b010: p = {up, dw, 1'b0, 1'b0, a, st};
 		3'b011: p = {up, dw, lf, rg, b, c};
 		3'b100: p = {1'b0, 1'b0, 1'b0, 1'b0, a, st};
-		3'b101: p = {z, y, x, md, 1'b1, 1'b1};
+		3'b101: p = {up, dw, lf, rg, b, c};
 		3'b110: p = {1'b1, 1'b1, 1'b1, 1'b1, a, st};
-		3'b111: p = {up, dw, lf, rg, b, c};
+		3'b111: p = {z, y, x, md, 1'b1, 1'b1};
 	endcase
 end
 
