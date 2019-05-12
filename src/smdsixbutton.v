@@ -1,5 +1,5 @@
 /*
-	Verilog Sega Genesis/Mega Drive Joystick Encoder v2.3
+	Verilog Sega Genesis/Mega Drive Joystick Encoder v2.4
 	(C) Bruno Freitas - 03/2019 - http://www.brunofreitas.com/
 	Released under MIT License.
 */
@@ -60,16 +60,16 @@ always @(posedge clk) begin
 	end
 end
 
-always @(hi_count, p7) begin
+always @(*) begin
 	$display("hi_count=%d", hi_count);
-	case ({hi_count, p7})
+	case ({hi_count, last_p7_2})
 		3'b000: p = {up, dw, 1'b0, 1'b0, a, st};
 		3'b001: p = {up, dw, lf, rg, b, c};
 		3'b010: p = {up, dw, 1'b0, 1'b0, a, st};
 		3'b011: p = {up, dw, lf, rg, b, c};
 		3'b100: p = {1'b0, 1'b0, 1'b0, 1'b0, a, st};
 		3'b101: p = {up, dw, lf, rg, b, c};
-		3'b110: p = {md, 1'b1, 1'b1, 1'b1, a, st};
+		3'b110: p = {1'b1, 1'b1, 1'b1, 1'b1, a, st};
 		3'b111: p = {z, y, x, md, 1'b1, 1'b1};
 	endcase
 end
