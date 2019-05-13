@@ -1,5 +1,5 @@
 /*
-	Verilog Sega Genesis/Mega Drive Joystick Encoder v2.4
+	Verilog Sega Genesis/Mega Drive Joystick Encoder v2.4a
 	(C) Bruno Freitas - 03/2019 - http://www.brunofreitas.com/
 	Released under MIT License.
 */
@@ -22,10 +22,10 @@ module smdsixbutton (
 	input md	 // Mode button
 );
 
-parameter TIMEOUT = 8000; // For 10Mhz oscillator
-//parameter TIMEOUT = 16000; // For 20Mhz oscillator
+parameter TIMEOUT = 14'd8000; // For 10Mhz oscillator
+//parameter TIMEOUT = 14'd16000; // For 20Mhz oscillator
 
-reg [15:0] clk_counter = TIMEOUT;
+reg [13:0] clk_counter = TIMEOUT;
 
 reg [1:0] hi_count = 2'b0;
 
@@ -51,10 +51,10 @@ always @(posedge clk) begin
 			hi_count <= 0;
 		end else begin
 			if (last_p7_1 && !last_p7_2) begin
-				hi_count <= hi_count + 1;
+				hi_count <= hi_count + 2'b1;
 				clk_counter <= TIMEOUT;
 			end else begin
-				clk_counter <= clk_counter - 1;
+				clk_counter <= clk_counter - 2'b1;
 			end
 		end
 	end
