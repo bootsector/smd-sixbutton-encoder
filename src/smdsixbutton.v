@@ -1,5 +1,5 @@
 /*
-	Verilog Sega Genesis/Mega Drive Joystick Encoder v2.4a
+	Verilog Sega Genesis/Mega Drive Joystick Encoder v2.5
 	(C) Bruno Freitas - 03/2019 - http://www.brunofreitas.com/
 	Released under MIT License.
 */
@@ -19,7 +19,8 @@ module smdsixbutton (
 	input x,	 // X button
 	input y,	 // Y button
 	input z,	 // Z button
-	input md	 // Mode button
+	input md,	 // Mode button
+	input hm     // Home button (Analogue Mega Sg)
 );
 
 parameter TIMEOUT = 14'd8000; // For 10Mhz oscillator
@@ -69,7 +70,7 @@ always @(*) begin
 		3'b011: p = {up, dw, lf, rg, b, c};
 		3'b100: p = {1'b0, 1'b0, 1'b0, 1'b0, a, st};
 		3'b101: p = {up, dw, lf, rg, b, c};
-		3'b110: p = {1'b1, 1'b1, 1'b1, 1'b1, a, st};
+		3'b110: p = {hm, 1'b1, 1'b1, 1'b1, a, st};
 		3'b111: p = {z, y, x, md, 1'b1, 1'b1};
 	endcase
 end

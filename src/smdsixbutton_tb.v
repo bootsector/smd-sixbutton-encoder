@@ -14,6 +14,7 @@ module smdsixbutton_tb;
 	reg y;	// Y button
 	reg z;	// Z button
 	reg md; // Mode button
+	reg hm; // Home button
 
 	reg clk = 1'd0;
 
@@ -38,6 +39,7 @@ module smdsixbutton_tb;
 		.z(z),
 		.md(md),
 		.clk(clk),
+		.hm(hm),
 
 		.p(p)
 	);
@@ -63,6 +65,7 @@ module smdsixbutton_tb;
 		y = 0;
 		z = 1;
 		md = 1;
+		hm = 1;
 
 		p7 = 1;
 
